@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="TlKarsiligi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="kodu" type="tns:KurKodu" />
+            <s:element minOccurs="1" maxOccurs="1" name="turu" type="tns:Tur" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="KurKodu">
+        <s:restriction base="s:string">
+          <s:enumeration value="USD" />
+          <s:enumeration value="CAD" />
+          <s:enumeration value="DKK" />
+          <s:enumeration value="SEK" />
+          <s:enumeration value="NOK" />
+          <s:enumeration value="CHF" />
+          <s:enumeration value="JPY" />
+          <s:enumeration value="SAR" />
+          <s:enumeration value="KWD" />
+          <s:enumeration value="AUD" />
+          <s:enumeration value="EUR" />
+          <s:enumeration value="GBP" />
+          <s:enumeration value="IRR" />
+          <s:enumeration value="SYP" />
+          <s:enumeration value="JOG" />
+          <s:enumeration value="BGL" />
+          <s:enumeration value="ROL" />
+          <s:enumeration value="ILS" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="Tur">
+        <s:restriction base="s:string">
+          <s:enumeration value="ForexBuying" />
+          <s:enumeration value="ForexSelling" />
+          <s:enumeration value="BanknoteBuying" />
+          <s:enumeration value="BanknoteSelling" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="TlKarsiligiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TlKarsiligiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TlKarsiligiSoapIn">
+    <wsdl:part name="parameters" element="tns:TlKarsiligi" />
+  </wsdl:message>
+  <wsdl:message name="TlKarsiligiSoapOut">
+    <wsdl:part name="parameters" element="tns:TlKarsiligiResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CurrencySoap">
+    <wsdl:operation name="TlKarsiligi">
+      <wsdl:input message="tns:TlKarsiligiSoapIn" />
+      <wsdl:output message="tns:TlKarsiligiSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CurrencySoap" type="tns:CurrencySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TlKarsiligi">
+      <soap:operation soapAction="http://tempuri.org/TlKarsiligi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CurrencySoap12" type="tns:CurrencySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TlKarsiligi">
+      <soap12:operation soapAction="http://tempuri.org/TlKarsiligi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Currency">
+    <wsdl:port name="CurrencySoap" binding="tns:CurrencySoap">
+      <soap:address location="http://localhost:51273/Y%C3%B6netim/Currency.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CurrencySoap12" binding="tns:CurrencySoap12">
+      <soap12:address location="http://localhost:51273/Y%C3%B6netim/Currency.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

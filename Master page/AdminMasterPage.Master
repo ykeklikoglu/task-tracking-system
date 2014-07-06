@@ -1,0 +1,132 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMasterPage.master.cs" Inherits="Görev_Takip_sistemim.Master_page.AdminMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+        .style2
+        {
+            width: 238px;
+        }
+    </style>
+</head>
+<body style="margin-bottom: 83px">
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+            <p>
+                <br />
+                <table class="style1">
+                    <tr>
+                        <td class="style2">
+                            <asp:LinkButton ID="LinkButton1" runat="server">Yeni Görev Ata</asp:LinkButton>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <asp:LinkButton ID="LinkButton2" runat="server">Yeni Haber Olustur</asp:LinkButton>
+&nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <asp:LinkButton ID="LinkButton3" runat="server">Kabul Edilen Görevler</asp:LinkButton>
+&nbsp;<asp:LinkButton ID="LinkButton_KabuledilenGörevSayısı" runat="server">(?)</asp:LinkButton>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <asp:LinkButton ID="LinkButton4" runat="server">Ertelenen Görevler</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton_ErtelenenGörevSayısı0" runat="server">(?)</asp:LinkButton>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <asp:LinkButton ID="LinkButton_DevredilenGörevler" runat="server">DevredilenGörevler</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton_DevredilenGörevSayısı1" runat="server">(?)</asp:LinkButton>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <asp:LinkButton ID="LinkButton_ReddedilenGörevler" runat="server">Reddedilen Görevler</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton_rededilenGörevSayısı" runat="server">(?)</asp:LinkButton>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <asp:LinkButton ID="LinkButton_BitenGörevler" runat="server">Biten Görevler</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton_BitenGörevSayısı" runat="server">(?)</asp:LinkButton>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <asp:LinkButton ID="LinkButton_BekleyenGörevler" runat="server">Bekleyen Görevler</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton_BekleyenGörevSayısı0" runat="server">(?)</asp:LinkButton>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <asp:LinkButton ID="LinkButton_Silinengörevler" runat="server">Silinen Görevler</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton_SilinenGörevSayısı1" runat="server">(?)</asp:LinkButton>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <asp:LinkButton ID="LinkButton10" runat="server">Mesajlar</asp:LinkButton>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            <asp:LinkButton ID="LinkButton_cıkısyap" runat="server">Çıkıs Yap</asp:LinkButton>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="style2">
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                </table>
+            </p>
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

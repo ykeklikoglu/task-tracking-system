@@ -1,0 +1,303 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.SqlClient;
+using System.Data;
+
+
+namespace Görev_Takip_sistemim.Fonksiyonlar
+{
+    public class BizPersonel
+    {
+        Fonksiyonlar.Baglantıİsleri bag = new Fonksiyonlar.Baglantıİsleri();
+        public Model.Personel Login(string kullaniciAdi, string sifre)//Login girisimi basarilimi?-Basarili ise kisi bilgileri return edilir.
+        {
+            Model.Personel loginOlanPersonel = null;
+            SqlConnection baglanti = bag.BaglantiAl();
+            #region SQL komut hazırlama bölümü query="SELECT Ad , Soyad , KullaniciAdi , Sifre,HesapAktif,Evlilik,TcNo,ID,Cinsiyet,DogumGunu FROM Personeller where Kullaniciadi = @KullaniciAdi and Sifre = @Sifre  "
+            string query = "SELECT Ad , Soyad , KullaniciAdi , Sifre,HesapAktif,Evlilik,TcNo,ID,Cinsiyet,DogumGunu FROM Personeller where Kullaniciadi = @KullaniciAdi and Sifre = @Sifre  ";
+            SqlCommand komut = baglanti.CreateCommand();
+            komut.CommandText = query;
+            SqlParameter kullaniciAdiParm = new SqlParameter("@KullaniciAdi", SqlDbType.VarChar);
+            kullaniciAdiParm.Value = kullaniciAdi;
+
+            SqlParameter sifreParm = new SqlParameter("@Sifre", SqlDbType.VarChar);
+            sifreParm.Value = sifre;
+
+            komut.Parameters.Add(kullaniciAdiParm);
+            komut.Parameters.Add(sifreParm);
+            #endregion
+            SqlDataReader reader = komut.ExecuteReader();//SQL sorgulama islemi
+            if (!reader.HasRows)//Hic Satir Gelmezse.
+            {
+                baglanti.Close();
+                return null;//
+            }
+            //En az bir satir geldiyse.
+            loginOlanPersonel = new Model.Personel();//yeni personel modelinde yapi olusturma
+            while (reader.Read())
+            {
+                #region okunan bilgileri LoginOlanPersonel yapisina tek tek kaydetme bolumu
+                loginOlanPersonel.Ad = reader["Ad"].ToString();
+                loginOlanPersonel.Soyad = reader["Soyad"].ToString();
+                loginOlanPersonel.KullaniciAdi = reader["KullaniciAdi"].ToString();
+                loginOlanPersonel.Sifre = reader["Sifre"].ToString();
+                loginOlanPersonel.HesapAktif = Convert.ToInt16(reader["HesapAktif"]);
+                loginOlanPersonel.Evlilik = reader["Sifre"].ToString();
+                loginOlanPersonel.TcNo = reader["TcNo"].ToString();
+                loginOlanPersonel.ID = Convert.ToInt16(reader["ID"]);
+                loginOlanPersonel.Cinsiyet = reader["Cinsiyet"].ToString();
+                loginOlanPersonel.DogumGunu = reader["DogumGunu"].ToString();
+                #endregion
+            }
+            baglanti.Close();
+            return loginOlanPersonel;//login olan kisinin bilgilerinin saklandigi yapi return edilir.
+        }
+        public bool AdminMi(Model.Personel adminmisin)
+        {
+            #region SQL komutu hazırlama bolumu query= "SELECT * FROM Personeller where ID = @Id and AdminMi=1 "
+            SqlConnection baglanti = bag.BaglantiAl();
+            string query = "SELECT * FROM Personeller where ID = @Id and AdminMi=1 ";
+            SqlCommand komut = baglanti.CreateCommand();
+            komut.CommandText = query;
+            SqlParameter IdParm = new SqlParameter("@Id", SqlDbType.Int);
+            IdParm.Value = adminmisin.ID;
+            komut.Parameters.Add(IdParm);
+            #endregion
+            SqlDataReader reader = komut.ExecuteReader();
+            if (!reader.HasRows)
+            {
+                baglanti.Close();
+                return false;
+            }
+            baglanti.Close();
+            return true;
+        }//METHOD'A GELEN KISI ADMIN MI? ADMINSE->TRUE DEGİLSE->FALSE.
+        public bool LoginUygunMu(Model.Personel calisanmi)
+        {
+            #region SQL baglanti komutları query: "SELECT ID , Ad , Soyad,HesapAktif FROM Personeller where ID = @Id and Ad = @Ad and Soyad=@Soyad and HesapAktif=1  "
+            SqlConnection baglanti = bag.BaglantiAl();
+            string query = "SELECT ID , Ad , Soyad, HesapAktif=1 FROM Personeller where ID = @Id and Ad = @Ad and Soyad=@Soyad  ";
+            SqlCommand komut = baglanti.CreateCommand();
+            komut.CommandText = query;
+            SqlParameter IdParm = new SqlParameter("@Id", SqlDbType.Int);
+            IdParm.Value = calisanmi.ID;
+
+            SqlParameter AdParm = new SqlParameter("@Ad", SqlDbType.VarChar);
+            AdParm.Value = calisanmi.Ad;
+
+            SqlParameter SoyadParm = new SqlParameter("@Soyad", SqlDbType.VarChar);
+            SoyadParm.Value = calisanmi.Soyad;
+
+            komut.Parameters.Add(IdParm);
+            komut.Parameters.Add(AdParm);
+            komut.Parameters.Add(SoyadParm);
+            #endregion
+            SqlDataReader reader = komut.ExecuteReader();
+            if (!reader.HasRows)//Hic satir yoksa
+            {
+                baglanti.Close();
+                return false;//giris yapamaz
+            }
+            baglanti.Close();
+            reader.Close();
+            #region SQL Baglantı komutu query:"UPDATE Personeller SET HesapAktif=1 WHERE  ID = @Idd and Ad = @Add and Soyad=@Soyadd"
+            query = "UPDATE Personeller SET HesapAktif=1 WHERE  ID = @Idd and Ad = @Add and Soyad=@Soyadd";
+            komut.CommandText = query;
+            SqlParameter IdPar = new SqlParameter("@Idd", SqlDbType.Int);
+            IdPar.Value = calisanmi.ID;
+            SqlParameter AdPar = new SqlParameter("@Add", SqlDbType.VarChar);
+            AdPar.Value = calisanmi.Ad;
+            SqlParameter SoyadPar = new SqlParameter("@Soyadd", SqlDbType.VarChar);
+            SoyadPar.Value = calisanmi.Soyad;
+            komut.Parameters.Add(IdPar);
+            komut.Parameters.Add(AdPar);
+            komut.Parameters.Add(SoyadPar);
+            #endregion
+            reader = komut.ExecuteReader();
+            reader.Close();
+            baglanti.Close();
+            return true;// giris yapabilir.  
+        }//Login olma hakki varmi?Kontrol eder varsa:1 yoksa:0 return eder.
+        public string yeniKullaniciEkle(Model.Personel yeni) 
+        {
+            SqlConnection baglanti = bag.BaglantiAl();
+            //UPDATE [Görev Takip Sistemi].dbo.Personeller SET TcNo = '11111111111', Mail = 'keko', Cinsiyet='k', Evlilik ='e', HesapAktif=1  WHERE  ID = 4 and Ad = 'burcu' and Soyad='keklikoglu'
+            string query = "UPDATE Personeller SET TcNo = @TcNo,Mail = @mail,Cinsiyet=@Cins,Evlilik =@Evli,DogumGunu=@Dg,HesapAktif=1,KullaniciAdi=@Ka,Sifre=@Sfre WHERE  ID = @Id and Ad = @Ad and Soyad=@Soyad ";
+            SqlCommand komut = baglanti.CreateCommand();
+            komut.CommandText = query;
+            SqlParameter KaParm = new SqlParameter("@Ka", SqlDbType.VarChar);
+            KaParm.Value = yeni.KullaniciAdi;
+            SqlParameter SfrParm = new SqlParameter("@Sfre", SqlDbType.VarChar);
+            SfrParm.Value = yeni.Sifre;
+            SqlParameter TcParm = new SqlParameter("@TcNo", SqlDbType.NVarChar);
+            TcParm.Value = yeni.TcNo;
+            SqlParameter IdParm = new SqlParameter("@ID", SqlDbType.Int);
+            IdParm.Value = yeni.ID;
+            SqlParameter AdParm = new SqlParameter("@Ad", SqlDbType.VarChar);
+            AdParm.Value = yeni.Ad;
+            SqlParameter SoyadParm = new SqlParameter("@Soyad", SqlDbType.VarChar);
+            SoyadParm.Value = yeni.Soyad;
+            SqlParameter MailParm = new SqlParameter("@Mail", SqlDbType.VarChar);
+            MailParm.Value = yeni.Mail;
+            SqlParameter CinsParm = new SqlParameter("@Cins", SqlDbType.Char);
+            CinsParm.Value = yeni.Cinsiyet;
+            SqlParameter EvlilikParm = new SqlParameter("@Evli", SqlDbType.Char);
+            EvlilikParm.Value = yeni.Evlilik;
+            SqlParameter DGParm = new SqlParameter("@Dg", SqlDbType.SmallDateTime);
+            DGParm.Value =yeni.DogumGunu;
+            komut.Parameters.Add(TcParm);
+            komut.Parameters.Add(MailParm);
+            komut.Parameters.Add(CinsParm);
+            komut.Parameters.Add(EvlilikParm);
+            komut.Parameters.Add(DGParm);
+            komut.Parameters.Add(KaParm);
+            komut.Parameters.Add(SfrParm);
+            komut.Parameters.Add(IdParm);
+            komut.Parameters.Add(AdParm);
+            komut.Parameters.Add(SoyadParm);
+            komut.ExecuteScalar();
+            baglanti.Close();
+            return ("Sisteminiz Aktif Hale Gelmiştir.Giriş Yapabilirsiniz.");
+        }
+        public List<Model.Personel> TumPersoneliGetir()
+        {
+            List<Model.Personel> tumPersoneller =new List<Model.Personel>();
+
+            SqlConnection baglanti = new SqlConnection();
+            baglanti.ConnectionString = "Data Source = KEKLIKOĞLU\\SQLEXPRESS; Initial Catalog = Görev Takip Sistemi;User ID=sa; Password=123; Trusted_Connection = false";
+            baglanti.Open();
+
+            string query = "SELECT ID, Soyad, Ad FROM Personeller Where Adminmi=0 ORDER BY Ad";
+            SqlCommand komut = baglanti.CreateCommand();
+            komut.CommandText = query;
+            SqlDataReader reader = komut.ExecuteReader();
+            while (reader.Read())
+            {
+                Model.Personel yeniPersonel = new Model.Personel();
+                yeniPersonel.ID = Convert.ToInt16(reader["ID"]);
+                yeniPersonel.Ad = reader["Ad"].ToString();
+                yeniPersonel.Soyad = reader["Soyad"].ToString();
+                tumPersoneller.Add(yeniPersonel);
+            }
+
+            baglanti.Close();
+
+            return tumPersoneller;
+        }
+        public string GörevAta(Model.Görev görevim) 
+        {
+            //SqlConnection baglanti = new SqlConnection();
+            SqlConnection baglanti = bag.BaglantiAl();
+            #region query = "Insert [Görev Takip Sistemi].dbo.Görevler (Yorum, BeklenenBitisTarihi,Verilistarihi, TarafındanAcıldı, GörevlendirilenPersonel, Baslık, Oncelik) VALUES (@Yorum, @Verilis,@Beklenen,@kimden,@kime,@baslik,@Oncelik)"
+            //Görev_Takip_sistemim.Fonksiyonlar.Baglantıİsleri pServisi = new Görev_Takip_sistemim.Fonksiyonlar.Baglantıİsleri();
+            //SqlConnection Baglanti = pServisi.BaglantiAl();
+            string query = "Insert Görevler (Yorum, BeklenenBitisTarihi,Verilistarihi, TarafındanAcıldıID,TarafındanAcıldıİsim, GörevlendirilenPersonel, Baslık, Oncelik) VALUES (@Yorum,@Beklenen , @Verilis,@kimden,@kimdenisim,@kime,@baslik,@Oncelik)";
+            SqlCommand komut = baglanti.CreateCommand();
+            komut.CommandText = query;
+            SqlParameter yorum = new SqlParameter("@Yorum", SqlDbType.Text);
+            yorum.Value = görevim.Yorum;
+            SqlParameter öncelik = new SqlParameter("@Oncelik", SqlDbType.VarChar);
+            öncelik.Value = görevim.Oncelik;
+            SqlParameter verilis = new SqlParameter("@Verilis", SqlDbType.SmallDateTime);
+            verilis.Value = görevim.VerilisTarihi;
+            SqlParameter beklenen = new SqlParameter("@Beklenen", SqlDbType.SmallDateTime);
+            beklenen.Value = görevim.BeklenenBitisTarihi;
+            SqlParameter kimden = new SqlParameter("@kimden", SqlDbType.Int);
+            kimden.Value = görevim.TarafındanAcıldı;
+            SqlParameter kimdenis = new SqlParameter("@kimdenisim", SqlDbType.VarChar);
+            kimdenis.Value = görevim.TarafındanAcıldıİsim;
+            SqlParameter kime = new SqlParameter("@kime", SqlDbType.Int);
+            kime.Value = görevim.GörevlendirilenPersonel;
+            SqlParameter baslık = new SqlParameter("@baslik", SqlDbType.VarChar);
+            baslık.Value = görevim.Baslık;
+            komut.Parameters.Add(yorum);
+            komut.Parameters.Add(beklenen);
+            komut.Parameters.Add(verilis);
+            komut.Parameters.Add(kimden);
+            komut.Parameters.Add(kimdenis);
+            komut.Parameters.Add(kime);
+            komut.Parameters.Add(baslık);
+            komut.Parameters.Add(öncelik);
+            #endregion
+            komut.ExecuteScalar();
+            baglanti.Close();
+            return ("Görev Başarı İle Eklenmiştir.");
+        }
+        public Model.Görev GörevNo(int Görevıd) 
+        {
+            
+            Model.Görev Görev = new Model.Görev();
+            SqlConnection Baglanti = bag.BaglantiAl();
+            Baglanti.Open();
+            string query = @"SELECT * FROM Görevler WHERE GörevId=@ID";
+            SqlCommand Komut = Baglanti.CreateCommand();
+            Komut.CommandText = query;
+            SqlParameter Id =new SqlParameter("@ID",SqlDbType.Int);
+            Id.Value=Görevıd;
+            Komut.Parameters.Add(Id);
+            SqlDataReader reader= Komut.ExecuteReader();
+            if (!reader.HasRows)//Hic Satir Gelmezse.
+            {
+                Baglanti.Close();
+                return null;//
+            }
+            while (reader.Read())
+            {
+                #region okunan bilgileri LoginOlanPersonel yapisina tek tek kaydetme bolumu
+                Görev.Baslık = reader["Baslık"].ToString();
+                Görev.BeklenenBitisTarihi = reader["BeklenenBitisTarihi"].ToString();
+                Görev.GörevId =Convert.ToInt16( reader["GörevId"]);
+                Görev.GörevlendirilenPersonel = Convert.ToInt16(reader["GörevlendirilenPersonel"]);
+                Görev.GörevlendirilenPersonelİsim = reader["GörevlendirilenPersonelİsim"].ToString();
+                Görev.Oncelik = reader["Oncelik"].ToString();
+                Görev.TarafındanAcıldı = Convert.ToInt16(reader["TarafındanAcıldıID"]);
+                Görev.TarafındanAcıldıİsim = reader["TarafındanAcıldıİsim"].ToString();
+                Görev.VerilisTarihi = reader["Verilistarihi"].ToString();
+                Görev.Yorum = reader["Yorum"].ToString();
+                #endregion
+            }
+            Baglanti.Close();
+            return (Görev);
+
+        }
+        public Model.ErtelenenGörevler ErtelenenGörevNo(int Görevıd)         
+        {
+            Model.ErtelenenGörevler Görev = new Model.ErtelenenGörevler();
+            SqlConnection Baglanti = bag.BaglantiAl();
+            string query = @"SELECT * FROM ErtelenenGörevler WHERE GörevId=@ID";
+            SqlCommand Komut = Baglanti.CreateCommand();
+            Komut.CommandText = query;
+            SqlParameter Id = new SqlParameter("@ID", SqlDbType.Int);
+            Id.Value = Görevıd;
+            Komut.Parameters.Add(Id);
+            SqlDataReader reader = Komut.ExecuteReader();
+            if (!reader.HasRows)//Hic Satir Gelmezse.
+            {
+                Baglanti.Close();
+                return null;//
+            }
+            while (reader.Read())
+            {
+                #region okunan bilgileri LoginOlanPersonel yapisina tek tek kaydetme bolumu
+                Görev.Baslık = reader["Baslık"].ToString();
+                Görev.BeklenenBitisTarihi = reader["BeklenenBitisTarihi"].ToString();
+                Görev.GörevId = Convert.ToInt16(reader["GörevId"]);
+                Görev.GörevlendirilenPersonel = Convert.ToInt16(reader["GörevlendirilenPersonel"]);
+                Görev.GörevlendirilenPersonelİsim = reader["GörevlendirilenPersonelİsim"].ToString();
+                Görev.Oncelik = reader["Oncelik"].ToString();
+                Görev.TarafındanAcıldıID = Convert.ToInt16(reader["TarafındanAcıldıID"]);
+                Görev.TarafındanAcıldıİsim = reader["TarafındanAcıldıİsim"].ToString();
+                Görev.Verilistarihi = reader["Verilistarihi"].ToString();
+                Görev.Yorum = reader["Yorum"].ToString();
+                Görev.ErtelemeNedeni = reader["ErtelemeNedeni"].ToString();
+                Görev.ErtelemeTarihi = reader["ErtelemeTarihi"].ToString();
+                Görev.ErtelenenTarih = reader["ErtelenenTarih"].ToString();
+                #endregion
+            }
+            Baglanti.Close();
+            return (Görev);
+        }
+    }
+}

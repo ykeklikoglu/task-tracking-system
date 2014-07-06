@@ -1,0 +1,744 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Master page/MasterAdminPage.Master" AutoEventWireup="true" CodeBehind="GörevDetayıYönetici.master.cs" Inherits="Görev_Takip_sistemim.Master_page.GörevDetayıYönetici" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+
+        .style25
+        {
+            width: 126%;
+            height: 701px;
+        }
+        .style26
+        {
+            width: 143px;
+            color: #FF0000;
+        }
+        .style42
+        {
+            width: 119px;
+        }
+        .style41
+        {
+            width: 119px;
+            color: #FF0000;
+            text-align: right;
+        }
+        .style27
+        {
+            width: 143px;
+        }
+        </style>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    <p>
+        <br />
+        <br />
+    <table class="style25" 
+            style="background-image: url('/İmages/active-logosoluk.gif')">
+        <tr>
+            <td class="style26" align="left">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                Aktif Görev Bilgisi<asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:Görev Takip SistemiConnectionString %>" 
+        
+        SelectCommand="SELECT [Baslık], [Verilistarihi], [BeklenenBitisTarihi], [Yorum], [Oncelik], [GörevinDurumu], [TarafındanAcıldıİsim], [GörevlendirilenPersonelİsim] FROM [Görevler] WHERE ([GörevId] = @GörevId2)">
+        <SelectParameters>
+            <asp:SessionParameter Name="GörevId2" SessionField="GörevID" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+            </td>
+            <td class="style42" style="color: #FF0000" align="center">
+                &nbsp;Ertelenme Bilgisi&nbsp;<asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:Görev Takip SistemiConnectionString %>" 
+                    
+                    
+                    
+                    
+                    SelectCommand="SELECT [ErtelemeTarihi], [ErtelenenTarih], [ErtelemeNedeni], [GörevlendirilenPersonelİsim], [GörevinDurumu] FROM [ErtelenenGörevler] WHERE ([GörevId] = @GörevId) ORDER BY [Sıra]">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="GörevId" SessionField="GörevID" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
+        </tr>
+        <tr>
+            <td class="style26" align="left">
+                <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" 
+                    BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" 
+                    CellPadding="4" DataSourceID="SqlDataSource1" 
+                    ForeColor="Black" GridLines="Vertical" Height="16px" Width="289px">
+                    <AlternatingRowStyle BackColor="White" />
+                    <EditRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <Fields>
+                        <asp:BoundField DataField="Baslık" HeaderText="Baslık" 
+                            SortExpression="Baslık" />
+                        <asp:BoundField DataField="Verilistarihi" HeaderText="Verilistarihi" 
+                            SortExpression="Verilistarihi" />
+                        <asp:BoundField DataField="BeklenenBitisTarihi" 
+                            HeaderText="BeklenenBitisTarihi" SortExpression="BeklenenBitisTarihi" />
+                        <asp:BoundField DataField="Yorum" HeaderText="Yorum" 
+                            SortExpression="Yorum" />
+                        <asp:BoundField DataField="Oncelik" HeaderText="Oncelik" 
+                            SortExpression="Oncelik" />
+                        <asp:BoundField DataField="GörevinDurumu" 
+                            HeaderText="GörevinDurumu" SortExpression="GörevinDurumu" />
+                        <asp:BoundField DataField="TarafındanAcıldıİsim" HeaderText="TarafındanAcıldıİsim" 
+                            SortExpression="TarafındanAcıldıİsim" />
+                        <asp:BoundField DataField="GörevlendirilenPersonelİsim" HeaderText="GörevlendirilenPersonelİsim" 
+                            SortExpression="GörevlendirilenPersonelİsim" />
+                    </Fields>
+                    <FooterStyle BackColor="#CCCC99" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#F7F7DE" />
+                </asp:DetailsView>
+            </td>
+            <td class="style42" valign="top" align="center">
+                <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource3">
+                    <AlternatingItemTemplate>
+                        <td runat="server" style="background-color: #FAFAD2;color: #284775;">
+                            ErtelemeTarihi:
+                            <asp:Label ID="ErtelemeTarihiLabel" runat="server" 
+                                Text='<%# Eval("ErtelemeTarihi") %>' />
+                            <br />
+                            ErtelenenTarih:
+                            <asp:Label ID="ErtelenenTarihLabel" runat="server" 
+                                Text='<%# Eval("ErtelenenTarih") %>' />
+                            <br />
+                            ErtelemeNedeni:
+                            <asp:Label ID="ErtelemeNedeniLabel" runat="server" 
+                                Text='<%# Eval("ErtelemeNedeni") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:Label ID="GörevlendirilenPersonelİsimLabel" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            GörevinDurumu:
+                            <asp:Label ID="GörevinDurumuLabel" runat="server" 
+                                Text='<%# Eval("GörevinDurumu") %>' />
+                            <br />
+                        </td>
+                    </AlternatingItemTemplate>
+                    <EditItemTemplate>
+                        <td runat="server" style="background-color: #FFCC66;color: #000080;">
+                            ErtelemeTarihi:
+                            <asp:TextBox ID="ErtelemeTarihiTextBox" runat="server" 
+                                Text='<%# Bind("ErtelemeTarihi") %>' />
+                            <br />
+                            ErtelenenTarih:
+                            <asp:TextBox ID="ErtelenenTarihTextBox" runat="server" 
+                                Text='<%# Bind("ErtelenenTarih") %>' />
+                            <br />
+                            ErtelemeNedeni:
+                            <asp:TextBox ID="ErtelemeNedeniTextBox" runat="server" 
+                                Text='<%# Bind("ErtelemeNedeni") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:TextBox ID="GörevlendirilenPersonelİsimTextBox" runat="server" 
+                                Text='<%# Bind("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            GörevinDurumu:
+                            <asp:TextBox ID="GörevinDurumuTextBox" runat="server" 
+                                Text='<%# Bind("GörevinDurumu") %>' />
+                            <br />
+                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" 
+                                Text="Update" />
+                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" 
+                                Text="Cancel" />
+                        </td>
+                    </EditItemTemplate>
+                    <EmptyDataTemplate>
+                        <table style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
+                            <tr>
+                                <td style="font-style: italic;">
+                                    Erteleme Bilgisi Yok.</td>
+                            </tr>
+                        </table>
+                    </EmptyDataTemplate>
+                    <InsertItemTemplate>
+                        <td runat="server" style="">
+                            ErtelemeTarihi:
+                            <asp:TextBox ID="ErtelemeTarihiTextBox0" runat="server" 
+                                Text='<%# Bind("ErtelemeTarihi") %>' />
+                            <br />
+                            ErtelenenTarih:
+                            <asp:TextBox ID="ErtelenenTarihTextBox0" runat="server" 
+                                Text='<%# Bind("ErtelenenTarih") %>' />
+                            <br />
+                            ErtelemeNedeni:
+                            <asp:TextBox ID="ErtelemeNedeniTextBox0" runat="server" 
+                                Text='<%# Bind("ErtelemeNedeni") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:TextBox ID="GörevlendirilenPersonelİsimTextBox0" runat="server" 
+                                Text='<%# Bind("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            GörevinDurumu:
+                            <asp:TextBox ID="GörevinDurumuTextBox0" runat="server" 
+                                Text='<%# Bind("GörevinDurumu") %>' />
+                            <br />
+                            <asp:Button ID="InsertButton" runat="server" CommandName="Insert" 
+                                Text="Insert" />
+                            <asp:Button ID="CancelButton0" runat="server" CommandName="Cancel" 
+                                Text="Clear" />
+                        </td>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <td runat="server" style="background-color: #FFFBD6;color: #333333;">
+                            ErtelemeTarihi:
+                            <asp:Label ID="ErtelemeTarihiLabel0" runat="server" 
+                                Text='<%# Eval("ErtelemeTarihi") %>' />
+                            <br />
+                            ErtelenenTarih:
+                            <asp:Label ID="ErtelenenTarihLabel0" runat="server" 
+                                Text='<%# Eval("ErtelenenTarih") %>' />
+                            <br />
+                            ErtelemeNedeni:
+                            <asp:Label ID="ErtelemeNedeniLabel0" runat="server" 
+                                Text='<%# Eval("ErtelemeNedeni") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:Label ID="GörevlendirilenPersonelİsimLabel0" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            GörevinDurumu:
+                            <asp:Label ID="GörevinDurumuLabel0" runat="server" 
+                                Text='<%# Eval("GörevinDurumu") %>' />
+                            <br />
+                        </td>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <table runat="server" border="1" 
+                            style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
+                            <tr ID="itemPlaceholderContainer" runat="server">
+                                <td ID="itemPlaceholder" runat="server">
+                                </td>
+                            </tr>
+                        </table>
+                        <div style="text-align: center;background-color: #FFCC66;font-family: Verdana, Arial, Helvetica, sans-serif;color: #333333;">
+                            <asp:DataPager ID="DataPager1" runat="server" PageSize="2">
+                                <Fields>
+                                    <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="İlk" 
+                                        LastPageText="Son" NextPageText="İleri" PreviousPageText="Geri" 
+                                        ShowFirstPageButton="True" ShowNextPageButton="False" 
+                                        ShowPreviousPageButton="False" />
+                                    <asp:NumericPagerField />
+                                    <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="İlk" 
+                                        LastPageText="Son" NextPageText="İleri" PreviousPageText="Geri" 
+                                        ShowLastPageButton="True" ShowNextPageButton="False" 
+                                        ShowPreviousPageButton="False" />
+                                </Fields>
+                            </asp:DataPager>
+                        </div>
+                    </LayoutTemplate>
+                    <SelectedItemTemplate>
+                        <td runat="server" 
+                            style="background-color: #FFCC66;font-weight: bold;color: #000080;">
+                            ErtelemeTarihi:
+                            <asp:Label ID="ErtelemeTarihiLabel1" runat="server" 
+                                Text='<%# Eval("ErtelemeTarihi") %>' />
+                            <br />
+                            ErtelenenTarih:
+                            <asp:Label ID="ErtelenenTarihLabel1" runat="server" 
+                                Text='<%# Eval("ErtelenenTarih") %>' />
+                            <br />
+                            ErtelemeNedeni:
+                            <asp:Label ID="ErtelemeNedeniLabel1" runat="server" 
+                                Text='<%# Eval("ErtelemeNedeni") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:Label ID="GörevlendirilenPersonelİsimLabel1" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            GörevinDurumu:
+                            <asp:Label ID="GörevinDurumuLabel1" runat="server" 
+                                Text='<%# Eval("GörevinDurumu") %>' />
+                            <br />
+                        </td>
+                    </SelectedItemTemplate>
+                </asp:ListView>
+            </td>
+        </tr>
+        <tr>
+            <td class="style26" valign="top" align="left">
+                &nbsp;</td>
+            <td class="style41" align="center">
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:Görev Takip SistemiConnectionString %>" 
+                    
+                    
+                    
+                    SelectCommand="SELECT Baslık, Yorum, ParçalanmaTarihi, ParçalanmaNedeni, ParçalanmaBitişTarihi, GörevinDurumu, Tamamlanma,GörevlendirilenPersonelİsim FROM ParçalananGörevler WHERE  (GörevID = @GörevID)">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="GörevId" SessionField="GörevID" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+                </td>
+        </tr>
+        <tr>
+            <td class="style26" valign="top" align="left">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Kabul Edilme Bilgisi<asp:SqlDataSource ID="SqlDataSource4" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:Görev Takip SistemiConnectionString %>" 
+                    
+                    SelectCommand="SELECT [GörevId], [Baslık], [Yorum], [Verilistarihi], [BeklenenBitisTarihi], [Oncelik], [GörevlendirilenPersonel], [GörevlendirilenPersonelİsim], [GörevDurum] FROM [KabulEdilenGörevler] WHERE ([GörevId] = @GörevId)">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="GörevId" SessionField="GörevID" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
+            <td class="style41" align="center">
+                <div align="center" class="style5">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parçalanma&nbsp;Bilgisi&nbsp;&nbsp;&nbsp;</div>
+                </td>
+        </tr>
+        <tr>
+            <td class="style27" valign="top" align="left">
+                <asp:ListView ID="ListView3" runat="server" DataSourceID="SqlDataSource4">
+                    <AlternatingItemTemplate>
+                        <td runat="server" style="background-color: #FAFAD2;color: #284775;">
+                            GörevId:
+                            <asp:Label ID="GörevIdLabel" runat="server" Text='<%# Eval("GörevId") %>' />
+                            <br />
+                            Baslık:
+                            <asp:Label ID="BaslıkLabel" runat="server" Text='<%# Eval("Baslık") %>' />
+                            <br />
+                            Yorum:
+                            <asp:Label ID="YorumLabel" runat="server" Text='<%# Eval("Yorum") %>' />
+                            <br />
+                            Verilistarihi:
+                            <asp:Label ID="VerilistarihiLabel" runat="server" 
+                                Text='<%# Eval("Verilistarihi") %>' />
+                            <br />
+                            BeklenenBitisTarihi:
+                            <asp:Label ID="BeklenenBitisTarihiLabel" runat="server" 
+                                Text='<%# Eval("BeklenenBitisTarihi") %>' />
+                            <br />
+                            Oncelik:
+                            <asp:Label ID="OncelikLabel" runat="server" 
+                                Text='<%# Eval("Oncelik") %>' />
+                            <br />
+                            GörevlendirilenPersonel:
+                            <asp:Label ID="GörevlendirilenPersonelLabel" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonel") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:Label ID="GörevlendirilenPersonelİsimLabel" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            GörevDurum:
+                            <asp:Label ID="GörevDurumLabel" runat="server" 
+                                Text='<%# Eval("GörevDurum") %>' />
+                            <br />
+                        </td>
+                    </AlternatingItemTemplate>
+                    <EditItemTemplate>
+                        <td runat="server" style="background-color: #FFCC66;color: #000080;">
+                            GörevId:
+                            <asp:TextBox ID="GörevIdTextBox" runat="server" Text='<%# Bind("GörevId") %>' />
+                            <br />
+                            Baslık:
+                            <asp:TextBox ID="BaslıkTextBox" runat="server" Text='<%# Bind("Baslık") %>' />
+                            <br />
+                            Yorum:
+                            <asp:TextBox ID="YorumTextBox" runat="server" Text='<%# Bind("Yorum") %>' />
+                            <br />
+                            Verilistarihi:
+                            <asp:TextBox ID="VerilistarihiTextBox" runat="server" 
+                                Text='<%# Bind("Verilistarihi") %>' />
+                            <br />
+                            BeklenenBitisTarihi:
+                            <asp:TextBox ID="BeklenenBitisTarihiTextBox" runat="server" 
+                                Text='<%# Bind("BeklenenBitisTarihi") %>' />
+                            <br />
+                            Oncelik:
+                            <asp:TextBox ID="OncelikTextBox" runat="server" 
+                                Text='<%# Bind("Oncelik") %>' />
+                            <br />
+                            GörevlendirilenPersonel:
+                            <asp:TextBox ID="GörevlendirilenPersonelTextBox" runat="server" 
+                                Text='<%# Bind("GörevlendirilenPersonel") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:TextBox ID="GörevlendirilenPersonelİsimTextBox" runat="server" 
+                                Text='<%# Bind("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            GörevDurum:
+                            <asp:TextBox ID="GörevDurumTextBox" runat="server" 
+                                Text='<%# Bind("GörevDurum") %>' />
+                            <br />
+                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" 
+                                Text="Update" />
+                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" 
+                                Text="Cancel" />
+                        </td>
+                    </EditItemTemplate>
+                    <EmptyDataTemplate>
+                        <table style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
+                            <tr>
+                                <td>
+                                    No data was returned.</td>
+                            </tr>
+                        </table>
+                    </EmptyDataTemplate>
+                    <InsertItemTemplate>
+                        <td runat="server" style="">
+                            GörevId:
+                            <asp:TextBox ID="GörevIdTextBox" runat="server" Text='<%# Bind("GörevId") %>' />
+                            <br />Baslık:
+                            <asp:TextBox ID="BaslıkTextBox" runat="server" Text='<%# Bind("Baslık") %>' />
+                            <br />Yorum:
+                            <asp:TextBox ID="YorumTextBox" runat="server" Text='<%# Bind("Yorum") %>' />
+                            <br />Verilistarihi:
+                            <asp:TextBox ID="VerilistarihiTextBox" runat="server" 
+                                Text='<%# Bind("Verilistarihi") %>' />
+                            <br />BeklenenBitisTarihi:
+                            <asp:TextBox ID="BeklenenBitisTarihiTextBox" runat="server" 
+                                Text='<%# Bind("BeklenenBitisTarihi") %>' />
+                            <br />Oncelik:
+                            <asp:TextBox ID="OncelikTextBox" runat="server" 
+                                Text='<%# Bind("Oncelik") %>' />
+                            <br />GörevlendirilenPersonel:
+                            <asp:TextBox ID="GörevlendirilenPersonelTextBox" runat="server" 
+                                Text='<%# Bind("GörevlendirilenPersonel") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:TextBox ID="GörevlendirilenPersonelİsimTextBox" runat="server" 
+                                Text='<%# Bind("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            GörevDurum:
+                            <asp:TextBox ID="GörevDurumTextBox" runat="server" 
+                                Text='<%# Bind("GörevDurum") %>' />
+                            <br />
+                            <asp:Button ID="InsertButton" runat="server" CommandName="Insert" 
+                                Text="Insert" />
+                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" 
+                                Text="Clear" />
+                        </td>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <td runat="server" style="background-color: #FFFBD6;color: #333333;">
+                            GörevId:
+                            <asp:Label ID="GörevIdLabel" runat="server" Text='<%# Eval("GörevId") %>' />
+                            <br />
+                            Baslık:
+                            <asp:Label ID="BaslıkLabel" runat="server" Text='<%# Eval("Baslık") %>' />
+                            <br />
+                            Yorum:
+                            <asp:Label ID="YorumLabel" runat="server" Text='<%# Eval("Yorum") %>' />
+                            <br />
+                            Verilistarihi:
+                            <asp:Label ID="VerilistarihiLabel" runat="server" 
+                                Text='<%# Eval("Verilistarihi") %>' />
+                            <br />
+                            BeklenenBitisTarihi:
+                            <asp:Label ID="BeklenenBitisTarihiLabel" runat="server" 
+                                Text='<%# Eval("BeklenenBitisTarihi") %>' />
+                            <br />
+                            Oncelik:
+                            <asp:Label ID="OncelikLabel" runat="server" 
+                                Text='<%# Eval("Oncelik") %>' />
+                            <br />
+                            GörevlendirilenPersonel:
+                            <asp:Label ID="GörevlendirilenPersonelLabel" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonel") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:Label ID="GörevlendirilenPersonelİsimLabel" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            GörevDurum:
+                            <asp:Label ID="GörevDurumLabel" runat="server" 
+                                Text='<%# Eval("GörevDurum") %>' />
+                            <br />
+                        </td>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <table runat="server" border="1" 
+                            style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
+                            <tr ID="itemPlaceholderContainer" runat="server">
+                                <td ID="itemPlaceholder" runat="server">
+                                </td>
+                            </tr>
+                        </table>
+                        <div style="text-align: center;background-color: #FFCC66;font-family: Verdana, Arial, Helvetica, sans-serif;color: #333333;">
+                            <asp:DataPager ID="DataPager1" runat="server" PageSize="2">
+                                <Fields>
+                                    <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="İlk" 
+                                        LastPageText="Son" NextPageText="İleri" PreviousPageText="Geri" 
+                                        ShowFirstPageButton="True" ShowNextPageButton="False" 
+                                        ShowPreviousPageButton="False" />
+                                    <asp:NumericPagerField />
+                                    <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="İlk" 
+                                        LastPageText="Son" NextPageText="İleri" PreviousPageText="Geri" 
+                                        ShowLastPageButton="True" ShowNextPageButton="False" 
+                                        ShowPreviousPageButton="False" />
+                                </Fields>
+                            </asp:DataPager>
+                        </div>
+                    </LayoutTemplate>
+                    <SelectedItemTemplate>
+                        <td runat="server" 
+                            style="background-color: #FFCC66;font-weight: bold;color: #000080;">
+                            GörevId:
+                            <asp:Label ID="GörevIdLabel" runat="server" Text='<%# Eval("GörevId") %>' />
+                            <br />
+                            Baslık:
+                            <asp:Label ID="BaslıkLabel" runat="server" Text='<%# Eval("Baslık") %>' />
+                            <br />
+                            Yorum:
+                            <asp:Label ID="YorumLabel" runat="server" Text='<%# Eval("Yorum") %>' />
+                            <br />
+                            Verilistarihi:
+                            <asp:Label ID="VerilistarihiLabel" runat="server" 
+                                Text='<%# Eval("Verilistarihi") %>' />
+                            <br />
+                            BeklenenBitisTarihi:
+                            <asp:Label ID="BeklenenBitisTarihiLabel" runat="server" 
+                                Text='<%# Eval("BeklenenBitisTarihi") %>' />
+                            <br />
+                            Oncelik:
+                            <asp:Label ID="OncelikLabel" runat="server" 
+                                Text='<%# Eval("Oncelik") %>' />
+                            <br />
+                            GörevlendirilenPersonel:
+                            <asp:Label ID="GörevlendirilenPersonelLabel" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonel") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:Label ID="GörevlendirilenPersonelİsimLabel" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            GörevDurum:
+                            <asp:Label ID="GörevDurumLabel" runat="server" 
+                                Text='<%# Eval("GörevDurum") %>' />
+                            <br />
+                        </td>
+                    </SelectedItemTemplate>
+                </asp:ListView>
+            </td>
+            <td class="style42" valign="top" align="center">
+                <asp:ListView ID="ListView2" runat="server" DataSourceID="SqlDataSource2" 
+                    style="margin-left: 0px">
+                    <AlternatingItemTemplate>
+                        <td runat="server" style="background-color: #FAFAD2; color: #284775;">
+                            Baslık:
+                            <asp:Label ID="BaslıkLabel" runat="server" 
+                                Text='<%# Eval("Baslık") %>' />
+                            <br />
+                            Yorum:
+                            <asp:Label ID="YorumLabel" runat="server" Text='<%# Eval("Yorum") %>' />
+                            <br />
+                            ParçalanmaTarihi:
+                            <asp:Label ID="ParçalanmaTarihiLabel" runat="server" 
+                                Text='<%# Eval("ParçalanmaTarihi") %>' />
+                            <br />
+                            ParçalanmaNedeni:
+                            <asp:Label ID="ParçalanmaNedeniLabel" runat="server" 
+                                Text='<%# Eval("ParçalanmaNedeni") %>' />
+                            <br />
+                            ParçalanmaBitişTarihi:
+                            <asp:Label ID="ParçalanmaBitişTarihiLabel" runat="server" 
+                                Text='<%# Eval("ParçalanmaBitişTarihi") %>' />
+                            <br />
+                            GörevinDurumu:
+                            <asp:Label ID="GörevinDurumuLabel" runat="server" 
+                                Text='<%# Eval("GörevinDurumu") %>' />
+                            <br />
+                            Tamamlanma:
+                            <asp:Label ID="TamamlanmaLabel" runat="server" 
+                                Text='<%# Eval("Tamamlanma") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:Label ID="GörevlendirilenPersonelİsimLabel" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                        </td>
+                    </AlternatingItemTemplate>
+                    <EditItemTemplate>
+                        <td runat="server" style="background-color: #FFCC66; color: #000080;">
+                            Baslık:
+                            <asp:TextBox ID="BaslıkTextBox" runat="server" 
+                                Text='<%# Bind("Baslık") %>' />
+                            <br />
+                            Yorum:
+                            <asp:TextBox ID="YorumTextBox" runat="server" Text='<%# Bind("Yorum") %>' />
+                            <br />
+                            ParçalanmaTarihi:
+                            <asp:TextBox ID="ParçalanmaTarihiTextBox" runat="server" 
+                                Text='<%# Bind("ParçalanmaTarihi") %>' />
+                            <br />
+                            ParçalanmaNedeni:
+                            <asp:TextBox ID="ParçalanmaNedeniTextBox" runat="server" 
+                                Text='<%# Bind("ParçalanmaNedeni") %>' />
+                            <br />
+                            ParçalanmaBitişTarihi:
+                            <asp:TextBox ID="ParçalanmaBitişTarihiTextBox" runat="server" 
+                                Text='<%# Bind("ParçalanmaBitişTarihi") %>' />
+                            <br />
+                            GörevinDurumu:
+                            <asp:TextBox ID="GörevinDurumuTextBox" runat="server" 
+                                Text='<%# Bind("GörevinDurumu") %>' />
+                            <br />
+                            Tamamlanma:
+                            <asp:TextBox ID="TamamlanmaTextBox" runat="server" 
+                                Text='<%# Bind("Tamamlanma") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:TextBox ID="GörevlendirilenPersonelİsimTextBox" runat="server" 
+                                Text='<%# Bind("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" 
+                                Text="Update" />
+                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" 
+                                Text="Cancel" />
+                        </td>
+                    </EditItemTemplate>
+                    <EmptyDataTemplate>
+                        <table style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
+                            <tr>
+                                <td>
+                                    No data was returned.</td>
+                            </tr>
+                        </table>
+                    </EmptyDataTemplate>
+                    <InsertItemTemplate>
+                        <td runat="server" style="">
+                            Baslık:
+                            <asp:TextBox ID="BaslıkTextBox" runat="server" 
+                                Text='<%# Bind("Baslık") %>' />
+                            <br />Yorum:
+                            <asp:TextBox ID="YorumTextBox" runat="server" Text='<%# Bind("Yorum") %>' />
+                            <br />
+                            ParçalanmaTarihi:
+                            <asp:TextBox ID="ParçalanmaTarihiTextBox" runat="server" 
+                                Text='<%# Bind("ParçalanmaTarihi") %>' />
+                            <br />
+                            ParçalanmaNedeni:
+                            <asp:TextBox ID="ParçalanmaNedeniTextBox" runat="server" 
+                                Text='<%# Bind("ParçalanmaNedeni") %>' />
+                            <br />
+                            ParçalanmaBitişTarihi:
+                            <asp:TextBox ID="ParçalanmaBitişTarihiTextBox" runat="server" 
+                                Text='<%# Bind("ParçalanmaBitişTarihi") %>' />
+                            <br />
+                            GörevinDurumu:
+                            <asp:TextBox ID="GörevinDurumuTextBox" runat="server" 
+                                Text='<%# Bind("GörevinDurumu") %>' />
+                            <br />
+                            Tamamlanma:
+                            <asp:TextBox ID="TamamlanmaTextBox" runat="server" 
+                                Text='<%# Bind("Tamamlanma") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:TextBox ID="GörevlendirilenPersonelİsimTextBox" runat="server" 
+                                Text='<%# Bind("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                            <asp:Button ID="InsertButton" runat="server" CommandName="Insert" 
+                                Text="Insert" />
+                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" 
+                                Text="Clear" />
+                        </td>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <td runat="server" style="background-color: #FFFBD6; color: #333333;">
+                            Baslık:
+                            <asp:Label ID="BaslıkLabel" runat="server" 
+                                Text='<%# Eval("Baslık") %>' />
+                            <br />
+                            Yorum:
+                            <asp:Label ID="YorumLabel" runat="server" Text='<%# Eval("Yorum") %>' />
+                            <br />
+                            ParçalanmaTarihi:
+                            <asp:Label ID="ParçalanmaTarihiLabel" runat="server" 
+                                Text='<%# Eval("ParçalanmaTarihi") %>' />
+                            <br />
+                            ParçalanmaNedeni:
+                            <asp:Label ID="ParçalanmaNedeniLabel" runat="server" 
+                                Text='<%# Eval("ParçalanmaNedeni") %>' />
+                            <br />
+                            ParçalanmaBitişTarihi:
+                            <asp:Label ID="ParçalanmaBitişTarihiLabel" runat="server" 
+                                Text='<%# Eval("ParçalanmaBitişTarihi") %>' />
+                            <br />
+                            GörevinDurumu:
+                            <asp:Label ID="GörevinDurumuLabel" runat="server" 
+                                Text='<%# Eval("GörevinDurumu") %>' />
+                            <br />
+                            Tamamlanma:
+                            <asp:Label ID="TamamlanmaLabel" runat="server" 
+                                Text='<%# Eval("Tamamlanma") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:Label ID="GörevlendirilenPersonelİsimLabel" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                        </td>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <table runat="server" border="1" 
+                            style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
+                            <tr ID="itemPlaceholderContainer" runat="server">
+                                <td ID="itemPlaceholder" runat="server">
+                                </td>
+                            </tr>
+                        </table>
+                        <div style="text-align: center;background-color: #FFCC66; font-family: Verdana, Arial, Helvetica, sans-serif;color: #333333">
+                            <asp:DataPager ID="DataPager1" runat="server" PageSize="2">
+                                <Fields>
+                                    <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="İlk" 
+                                        LastPageText="Son" NextPageText="İleri" PreviousPageText="Geri" 
+                                        ShowFirstPageButton="True" ShowNextPageButton="False" 
+                                        ShowPreviousPageButton="False" />
+                                    <asp:NumericPagerField />
+                                    <asp:NextPreviousPagerField ButtonType="Button" FirstPageText="İlk" 
+                                        LastPageText="Son" NextPageText="İleri" PreviousPageText="Geri" 
+                                        ShowLastPageButton="True" ShowNextPageButton="False" 
+                                        ShowPreviousPageButton="False" />
+                                </Fields>
+                            </asp:DataPager>
+                        </div>
+                    </LayoutTemplate>
+                    <SelectedItemTemplate>
+                        <td runat="server" 
+                            style="background-color: #FFCC66; font-weight: bold;color: #000080;">
+                            Baslık:
+                            <asp:Label ID="BaslıkLabel" runat="server" 
+                                Text='<%# Eval("Baslık") %>' />
+                            <br />
+                            Yorum:
+                            <asp:Label ID="YorumLabel" runat="server" Text='<%# Eval("Yorum") %>' />
+                            <br />
+                            ParçalanmaTarihi:
+                            <asp:Label ID="ParçalanmaTarihiLabel" runat="server" 
+                                Text='<%# Eval("ParçalanmaTarihi") %>' />
+                            <br />
+                            ParçalanmaNedeni:
+                            <asp:Label ID="ParçalanmaNedeniLabel" runat="server" 
+                                Text='<%# Eval("ParçalanmaNedeni") %>' />
+                            <br />
+                            ParçalanmaBitişTarihi:
+                            <asp:Label ID="ParçalanmaBitişTarihiLabel" runat="server" 
+                                Text='<%# Eval("ParçalanmaBitişTarihi") %>' />
+                            <br />
+                            GörevinDurumu:
+                            <asp:Label ID="GörevinDurumuLabel" runat="server" 
+                                Text='<%# Eval("GörevinDurumu") %>' />
+                            <br />
+                            Tamamlanma:
+                            <asp:Label ID="TamamlanmaLabel" runat="server" 
+                                Text='<%# Eval("Tamamlanma") %>' />
+                            <br />
+                            GörevlendirilenPersonelİsim:
+                            <asp:Label ID="GörevlendirilenPersonelİsimLabel" runat="server" 
+                                Text='<%# Eval("GörevlendirilenPersonelİsim") %>' />
+                            <br />
+                        </td>
+                    </SelectedItemTemplate>
+                </asp:ListView>
+            </td>
+        </tr>
+        </table>
+    </p>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

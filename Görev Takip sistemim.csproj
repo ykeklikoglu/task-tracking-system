@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{53BC2662-B19C-4590-8178-B75625A2799B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Görev_Takip_sistemim</RootNamespace>
+    <AssemblyName>Görev Takip sistemim</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\localhost\Currency.disco" />
+    <Content Include="Resimler\active-logo1.gif" />
+    <Content Include="Resimler\active-logosoluk.gif" />
+    <Content Include="Resimler\cancel_icon.jpg" />
+    <Content Include="Resimler\iconResearchPapers.png" />
+    <Content Include="Resimler\Icon_Delete.gif" />
+    <Content Include="Resimler\icon_edit_and_up.gif" />
+    <Content Include="Resimler\icon_success.gif" />
+    <Content Include="Resimler\icon_update.gif" />
+    <Content Include="Resimler\like_icon.png" />
+    <Content Include="Resimler\selectIcon.jpg" />
+    <Content Include="Resimler\trash_bin_icon-218931-1236789704.jpeg" />
+    <Content Include="Resimler\unlike_icon.png" />
+    <Content Include="Resimler\Yukleniyor.gif" />
+    <Content Include="Resimler\İncele.png" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Yönetim\AdminPage\AdminMasaüstüPage.aspx" />
+    <Content Include="Yönetim\AdminPage\ErtelenenGörevlerPage.aspx" />
+    <Content Include="Yönetim\AdminPage\GörevDetayı.aspx" />
+    <Content Include="Yönetim\AdminPage\KabulEdilenlerGörevler.aspx" />
+    <Content Include="Yönetim\AdminPage\Mesajlar.aspx" />
+    <Content Include="Yönetim\AdminPage\ParçalananGörevler.aspx" />
+    <Content Include="Yönetim\AdminPage\PersonelAlımı.aspx" />
+    <Content Include="Yönetim\AdminPage\GörevAtaPage.aspx" />
+    <Content Include="Yönetim\AdminPage\HaberOlustur.aspx" />
+    <Content Include="Yönetim\AdminPage\ReddedilenGörevler.aspx" />
+    <Content Include="Yönetim\AdminPage\SilinenGörevler.aspx" />
+    <Content Include="Yönetim\AdminPage\TamamlananGörevler.aspx" />
+    <Content Include="Yönetim\AdminPage\SadeceGörevDetayı.aspx" />
+    <Content Include="Yönetim\AdminPage\TümGörevler.aspx" />
+    <Content Include="Yönetim\Currency.asmx" />
+    <Content Include="Yönetim\LoginPageFile\LoginPage.aspx" />
+    <Content Include="Yönetim\PersonalPage\Anasayfa.aspx" />
+    <Content Include="Yönetim\PersonalPage\BitirdigimGörevler.aspx" />
+    <Content Include="Yönetim\PersonalPage\DetayTamamlananGörevler.aspx" />
+    <Content Include="Yönetim\PersonalPage\ErteledigimGörevler.aspx" />
+    <Content Include="Yönetim\PersonalPage\GörevDetayı.aspx" />
+    <Content Include="Yönetim\PersonalPage\GörevParçala.aspx" />
+    <Content Include="Yönetim\PersonalPage\KabulEttigimGörevler.aspx" />
+    <Content Include="Yönetim\PersonalPage\KabulGörevDetayı.aspx" />
+    <Content Include="Yönetim\PersonalPage\ParçalananGörevler.aspx" />
+    <Content Include="Yönetim\PersonalPage\Personalpagedesktop.aspx" />
+    <Content Include="Yönetim\PersonalPage\ReddedilenGörevler.aspx" />
+    <Content Include="Yönetim\PersonalPage\SilinenGörevler.aspx" />
+    <Content Include="Yönetim\PersonalPage\YeniGörevlerim.aspx" />
+    <Content Include="Yönetim\ÜyeOlPage\Üyeol.aspx" />
+    <Content Include="İmages\active-logo1.gif" />
+    <Content Include="İmages\active-logosoluk.gif" />
+    <Content Include="İmages\cancel_icon.jpg" />
+    <Content Include="İmages\iconResearchPapers.png" />
+    <Content Include="İmages\Icon_Delete.gif" />
+    <Content Include="İmages\icon_edit_and_up.gif" />
+    <Content Include="İmages\icon_success.gif" />
+    <Content Include="İmages\icon_update.gif" />
+    <Content Include="İmages\like_icon.png" />
+    <Content Include="İmages\selectIcon.jpg" />
+    <Content Include="İmages\trash_bin_icon-218931-1236789704.jpeg" />
+    <Content Include="İmages\unlike_icon.png" />
+    <Content Include="İmages\Yukleniyor.gif" />
+    <Content Include="İmages\İncele.png" />
+    <None Include="Web References\localhost\Currency.wsdl" />
+    <None Include="Web References\localhost\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\DBConnection.cs" />
+    <Compile Include="Fonksiyonlar\Baglantıİsleri.cs" />
+    <Compile Include="Fonksiyonlar\BizPersonel.cs" />
+    <Compile Include="Master page\GörevDetayıPersonel.master.cs">
+      <DependentUpon>GörevDetayıPersonel.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master page\GörevDetayıPersonel.master.designer.cs">
+      <DependentUpon>GörevDetayıPersonel.master</DependentUpon>
+    </Compile>
+    <Compile Include="Master page\GörevDetayıYönetici.master.cs">
+      <DependentUpon>GörevDetayıYönetici.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master page\GörevDetayıYönetici.master.designer.cs">
+      <DependentUpon>GörevDetayıYönetici.master</DependentUpon>
+    </Compile>
+    <Compile Include="Master page\MasterAdminPage.Master.cs">
+      <DependentUpon>MasterAdminPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master page\MasterAdminPage.Master.designer.cs">
+      <DependentUpon>MasterAdminPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master page\PersonPage_AnaTablo.Master.cs">
+      <DependentUpon>PersonPage_AnaTablo.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master page\PersonPage_AnaTablo.Master.designer.cs">
+      <DependentUpon>PersonPage_AnaTablo.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ErtelenenGörevler.cs" />
+    <Compile Include="Model\Görev.cs" />
+    <Compile Include="Model\Personel.cs" />
+    <Compile Include="Model\SilinenGörevler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\localhost\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\AdminMasaüstüPage.aspx.cs">
+      <DependentUpon>AdminMasaüstüPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\AdminMasaüstüPage.aspx.designer.cs">
+      <DependentUpon>AdminMasaüstüPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\ErtelenenGörevlerPage.aspx.cs">
+      <DependentUpon>ErtelenenGörevlerPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\ErtelenenGörevlerPage.aspx.designer.cs">
+      <DependentUpon>ErtelenenGörevlerPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\GörevDetayı.aspx.cs">
+      <DependentUpon>GörevDetayı.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\GörevDetayı.aspx.designer.cs">
+      <DependentUpon>GörevDetayı.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\KabulEdilenlerGörevler.aspx.cs">
+      <DependentUpon>KabulEdilenlerGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\KabulEdilenlerGörevler.aspx.designer.cs">
+      <DependentUpon>KabulEdilenlerGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\Mesajlar.aspx.cs">
+      <DependentUpon>Mesajlar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\Mesajlar.aspx.designer.cs">
+      <DependentUpon>Mesajlar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\ParçalananGörevler.aspx.cs">
+      <DependentUpon>ParçalananGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\ParçalananGörevler.aspx.designer.cs">
+      <DependentUpon>ParçalananGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\PersonelAlımı.aspx.cs">
+      <DependentUpon>PersonelAlımı.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\PersonelAlımı.aspx.designer.cs">
+      <DependentUpon>PersonelAlımı.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\GörevAtaPage.aspx.cs">
+      <DependentUpon>GörevAtaPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\GörevAtaPage.aspx.designer.cs">
+      <DependentUpon>GörevAtaPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\HaberOlustur.aspx.cs">
+      <DependentUpon>HaberOlustur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\HaberOlustur.aspx.designer.cs">
+      <DependentUpon>HaberOlustur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\ReddedilenGörevler.aspx.cs">
+      <DependentUpon>ReddedilenGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\ReddedilenGörevler.aspx.designer.cs">
+      <DependentUpon>ReddedilenGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\SilinenGörevler.aspx.cs">
+      <DependentUpon>SilinenGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\SilinenGörevler.aspx.designer.cs">
+      <DependentUpon>SilinenGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\TamamlananGörevler.aspx.cs">
+      <DependentUpon>TamamlananGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\TamamlananGörevler.aspx.designer.cs">
+      <DependentUpon>TamamlananGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\SadeceGörevDetayı.aspx.cs">
+      <DependentUpon>SadeceGörevDetayı.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\SadeceGörevDetayı.aspx.designer.cs">
+      <DependentUpon>SadeceGörevDetayı.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\TümGörevler.aspx.cs">
+      <DependentUpon>TümGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\AdminPage\TümGörevler.aspx.designer.cs">
+      <DependentUpon>TümGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\Currency.asmx.cs">
+      <DependentUpon>Currency.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Yönetim\LoginPageFile\LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\LoginPageFile\LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\Anasayfa.aspx.cs">
+      <DependentUpon>Anasayfa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\Anasayfa.aspx.designer.cs">
+      <DependentUpon>Anasayfa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\BitirdigimGörevler.aspx.cs">
+      <DependentUpon>BitirdigimGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\BitirdigimGörevler.aspx.designer.cs">
+      <DependentUpon>BitirdigimGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\DetayTamamlananGörevler.aspx.cs">
+      <DependentUpon>DetayTamamlananGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\DetayTamamlananGörevler.aspx.designer.cs">
+      <DependentUpon>DetayTamamlananGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\ErteledigimGörevler.aspx.cs">
+      <DependentUpon>ErteledigimGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\ErteledigimGörevler.aspx.designer.cs">
+      <DependentUpon>ErteledigimGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\GörevDetayı.aspx.cs">
+      <DependentUpon>GörevDetayı.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\GörevDetayı.aspx.designer.cs">
+      <DependentUpon>GörevDetayı.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\GörevParçala.aspx.cs">
+      <DependentUpon>GörevParçala.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\GörevParçala.aspx.designer.cs">
+      <DependentUpon>GörevParçala.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\KabulEttigimGörevler.aspx.cs">
+      <DependentUpon>KabulEttigimGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\KabulEttigimGörevler.aspx.designer.cs">
+      <DependentUpon>KabulEttigimGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\KabulGörevDetayı.aspx.cs">
+      <DependentUpon>KabulGörevDetayı.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\KabulGörevDetayı.aspx.designer.cs">
+      <DependentUpon>KabulGörevDetayı.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\ParçalananGörevler.aspx.cs">
+      <DependentUpon>ParçalananGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\ParçalananGörevler.aspx.designer.cs">
+      <DependentUpon>ParçalananGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\Personalpagedesktop.aspx.cs">
+      <DependentUpon>Personalpagedesktop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\Personalpagedesktop.aspx.designer.cs">
+      <DependentUpon>Personalpagedesktop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\ReddedilenGörevler.aspx.cs">
+      <DependentUpon>ReddedilenGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\ReddedilenGörevler.aspx.designer.cs">
+      <DependentUpon>ReddedilenGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\SilinenGörevler.aspx.cs">
+      <DependentUpon>SilinenGörevler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\SilinenGörevler.aspx.designer.cs">
+      <DependentUpon>SilinenGörevler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\YeniGörevlerim.aspx.cs">
+      <DependentUpon>YeniGörevlerim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\PersonalPage\YeniGörevlerim.aspx.designer.cs">
+      <DependentUpon>YeniGörevlerim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Yönetim\ÜyeOlPage\Üyeol.aspx.cs">
+      <DependentUpon>Üyeol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Yönetim\ÜyeOlPage\Üyeol.aspx.designer.cs">
+      <DependentUpon>Üyeol.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master page\MasterAdminPage.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master page\PersonPage_AnaTablo.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master page\GörevDetayıPersonel.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master page\GörevDetayıYönetici.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:51273/Y%25C3%25B6netim/Currency.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\localhost\</RelPath>
+      <UpdateFromURL>http://localhost:51273/Y%25C3%25B6netim/Currency.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Görev_Takip_sistemim_localhost_Currency</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51273</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

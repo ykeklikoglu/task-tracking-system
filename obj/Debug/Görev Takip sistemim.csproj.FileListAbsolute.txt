@@ -1,0 +1,40 @@
+C:\Users\yahya\Desktop\Görev Takip sistemim\Görev Takip sistemim\bin\Görev Takip sistemim.dll
+C:\Users\yahya\Desktop\Görev Takip sistemim\Görev Takip sistemim\bin\Görev Takip sistemim.pdb
+C:\Users\yahya\Desktop\Görev Takip sistemim\Görev Takip sistemim\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\yahya\Desktop\Görev Takip sistemim\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.dll
+C:\Users\yahya\Desktop\Görev Takip sistemim\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.pdb
+C:\Users\yahya\Desktop\Görev Takip sistemim\Project10\Görev Takip sistemim\bin\Görev Takip sistemim.dll
+C:\Users\yahya\Desktop\Görev Takip sistemim\Project10\Görev Takip sistemim\bin\Görev Takip sistemim.pdb
+C:\Users\yahya\Desktop\Görev Takip sistemim\Project10\Görev Takip sistemim\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\yahya\Desktop\Görev Takip sistemim\Project10\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.dll
+C:\Users\yahya\Desktop\Görev Takip sistemim\Project10\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.pdb
+C:\Masa Üstü\proje\Görev Takip sistemim\bin\Görev Takip sistemim.dll
+C:\Masa Üstü\proje\Görev Takip sistemim\bin\Görev Takip sistemim.pdb
+C:\Masa Üstü\proje\Görev Takip sistemim\obj\Debug\ResolveAssemblyReference.cache
+C:\Masa Üstü\proje\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.dll
+C:\Masa Üstü\proje\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.pdb
+C:\Users\yahya\Desktop\Görev Takip sistemim\Yeni klasör (2)\Görev Takip sistemim\bin\Görev Takip sistemim.dll
+C:\Users\yahya\Desktop\Görev Takip sistemim\Yeni klasör (2)\Görev Takip sistemim\bin\Görev Takip sistemim.pdb
+C:\Users\yahya\Desktop\Görev Takip sistemim\Yeni klasör (2)\Görev Takip sistemim\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\yahya\Desktop\Görev Takip sistemim\Yeni klasör (2)\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.dll
+C:\Users\yahya\Desktop\Görev Takip sistemim\Yeni klasör (2)\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.pdb
+C:\Users\yahya\Desktop\son\Görev Takip sistemim\bin\Görev Takip sistemim.dll
+C:\Users\yahya\Desktop\son\Görev Takip sistemim\bin\Görev Takip sistemim.pdb
+C:\Users\yahya\Desktop\son\Görev Takip sistemim\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\yahya\Desktop\son\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.dll
+C:\Users\yahya\Desktop\son\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.pdb
+C:\Users\yahya\Desktop\c++ calısmaları\web proje\Görev Takip sistemim\bin\Görev Takip sistemim.dll
+C:\Users\yahya\Desktop\c++ calısmaları\web proje\Görev Takip sistemim\bin\Görev Takip sistemim.pdb
+C:\Users\yahya\Desktop\c++ calısmaları\web proje\Görev Takip sistemim\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\yahya\Desktop\c++ calısmaları\web proje\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.dll
+C:\Users\yahya\Desktop\c++ calısmaları\web proje\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.pdb
+C:\New folder\c++ calısmaları\web proje\Görev Takip sistemim\bin\Görev Takip sistemim.dll
+C:\New folder\c++ calısmaları\web proje\Görev Takip sistemim\bin\Görev Takip sistemim.pdb
+C:\New folder\c++ calısmaları\web proje\Görev Takip sistemim\obj\Debug\ResolveAssemblyReference.cache
+C:\New folder\c++ calısmaları\web proje\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.dll
+C:\New folder\c++ calısmaları\web proje\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.pdb
+C:\Masaüstü Kısayol İçeriği\c++ calısmaları\web proje\Görev Takip sistemim\bin\Görev Takip sistemim.dll
+C:\Masaüstü Kısayol İçeriği\c++ calısmaları\web proje\Görev Takip sistemim\bin\Görev Takip sistemim.pdb
+C:\Masaüstü Kısayol İçeriği\c++ calısmaları\web proje\Görev Takip sistemim\obj\Debug\ResolveAssemblyReference.cache
+C:\Masaüstü Kısayol İçeriği\c++ calısmaları\web proje\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.dll
+C:\Masaüstü Kısayol İçeriği\c++ calısmaları\web proje\Görev Takip sistemim\obj\Debug\Görev Takip sistemim.pdb

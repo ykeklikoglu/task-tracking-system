@@ -1,0 +1,225 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterAdminPage.master.cs" Inherits="Görev_Takip_sistemim.Master_page.MasterAdminPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style9
+        {
+            width: 100%;
+        }
+        .style10
+        {
+            width: 1073px;
+        }
+        .style1
+        {
+            width: 99%;
+            height: 562px;
+        }
+        .style3
+        {
+            width: 200px;
+            height: 36px;
+        }
+        .style4
+        {
+            width: 805px;
+        }
+        .style5
+        {
+            width: 200px;
+            height: 15px;
+            background-color: #495A76;
+        }
+        .style2
+        {
+            width: 200px;
+            background-color: #495A76;
+        }
+        .style8
+        {
+            color: #FFFFFF;
+        }
+        .style7
+        {
+            width: 200px;
+            height: 2px;
+            background-color: #495A76;
+        }
+        .style6
+        {
+            width: 200px;
+            height: 2px;
+        }
+        .style11
+        {
+            width: 2899px;
+        }
+        </style>
+</head>
+<body style="height: 578px; width: 1064px">
+    <form id="form1" runat="server">
+    <div>
+        <table class="style9">
+            <tr>
+                <td class="style10">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+            </panel>
+            <table class="style1">
+                <tr>
+                    <td class="style3">
+                        <asp:Image ID="Image1" runat="server" Height="128px" 
+                        ImageUrl="~/İmages/active-logo1.gif" Width="202px" />
+                        <asp:Label ID="Label_onlineOlanAdmin" runat="server" Font-Bold="True" 
+                                Font-Italic="True" ForeColor="#2D3F5D"></asp:Label>
+                        <div class="DodatkiWww-Zegar DodatkiWww" data-locale="en_US" data-v="1" 
+                                data-hash-v="1" data-hash="6253d735f41a95307d7df404a7e4f246" data-typ="4" 
+                                style="width:150px; height:60px;" align="center" >
+                            <a href="http://meteor24.pl/noclegi/ustka,0.html" title="Ustka noclegi">Ustka</a></div>
+                            <script src="http://mapanastrone.net/jsm/manager"></script>                                                                                                                                                                                                                                                                                                                                                                                                                             DodatkiWww.Core.LoadModules("Clock");</script>
+                        </td>
+                    <td class="style11" rowspan="16">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
+                        </asp:ContentPlaceHolder>
+                    </td>
+                    <td class="style4" rowspan="16">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style5">
+                        <asp:HyperLink ID="HyperLink2" runat="server" 
+                                NavigateUrl="~/Yönetim/AdminPage/AdminMasaüstüPage.aspx" style="color: #FFFFFF">Anasayfa</asp:HyperLink>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        <asp:LinkButton ID="LinkButton_Gorevata" runat="server" 
+                                onclick="LinkButton_Gorevata_Click" CssClass="style8">Görev Ata</asp:LinkButton>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        <asp:LinkButton ID="LinkButton_HaberOlustur" runat="server" 
+                                onclick="LinkButton_HaberOlustur_Click" CssClass="style8">Haber Oluştur</asp:LinkButton>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        <asp:LinkButton ID="LinkButton_Kabuledilenler" runat="server" 
+                                onclick="LinkButton3_Click" CssClass="style8">Kabul Edilen Görevler</asp:LinkButton>
+                        <asp:Label ID="Label_Kabuledilengörevlersayısı" runat="server" Text="(?)" 
+                                CssClass="style8"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        <asp:HyperLink ID="HyperLink1" runat="server" 
+                                NavigateUrl="~/Yönetim/AdminPage/ErtelenenGörevlerPage.aspx" 
+                                CssClass="style8">Ertelenen Görevler</asp:HyperLink>
+                        <asp:Label ID="Label_ertelenengörevlersayısı0" runat="server" Text="(?)" 
+                                CssClass="style8"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        <asp:LinkButton ID="LinkButton_ParçalananGörevler" runat="server" 
+                                onclick="LinkButton_DevredilenGörevler_Click" CssClass="style8">Parçalanan Görevler</asp:LinkButton>
+                        <asp:Label ID="Label_Parçalanangörevlersayı" runat="server" Text="(?)" 
+                                CssClass="style8"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        <asp:LinkButton ID="LinkButton_ReddedilenGörevler" runat="server" 
+                                onclick="LinkButton_ReddedilenGörevler_Click" CssClass="style8">Reddedilen Görevler</asp:LinkButton>
+                        <asp:Label ID="Label_ReddedilenGörevler0" runat="server" Text="(?)" 
+                                CssClass="style8"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        <asp:LinkButton ID="_SilinenGörevler" runat="server" 
+                                onclick="_SilinenGörevler_Click" CssClass="style8">SilinenGörevler</asp:LinkButton>
+                        <asp:Label ID="Label_SilinenGörevler" runat="server" Text="(?)" 
+                                CssClass="style8"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        <asp:LinkButton ID="_BitenGörevler" runat="server" 
+                                onclick="_BitenGörevler_Click" CssClass="style8">Tamamlanan Görevler</asp:LinkButton>
+                        <asp:Label ID="Label_BitenGörevler" runat="server" Text="(?)" CssClass="style8"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        <asp:LinkButton ID="LinkButton_Mesajlar" runat="server" 
+                                onclick="LinkButton_Mesajlar_Click" CssClass="style8">Mesajlar</asp:LinkButton>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        <asp:LinkButton ID="linkbutton_TümGörevler" runat="server" CssClass="style8" 
+                            onclick="linkbutton_TümGörevler_Click">Tüm Görevler</asp:LinkButton>
+                        <asp:Label ID="Label_TumGörevlersayısı" runat="server" style="color: #FFFFFF" 
+                                Text="()"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        <asp:HyperLink ID="HyperLink_İşciAlımı" runat="server" 
+                                NavigateUrl="~/Yönetim/AdminPage/PersonelAlımı.aspx" CssClass="style8">Personel Alımı</asp:HyperLink>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style7">
+                        <asp:LinkButton ID="linkButton_çıkıs" runat="server" onclick="ş_Click" 
+                                CssClass="style8">Çıkıs</asp:LinkButton>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style6">
+                        <asp:Calendar ID="Calendar1" runat="server" BackColor="White" 
+                                BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" 
+                                Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="121px" 
+                                Width="188px">
+                            <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
+                            <NextPrevStyle VerticalAlign="Bottom" />
+                            <OtherMonthDayStyle ForeColor="#808080" />
+                            <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
+                            <SelectorStyle BackColor="#CCCCCC" />
+                            <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
+                            <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
+                            <WeekendDayStyle BackColor="#FFFFCC" />
+                        </asp:Calendar>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style6">
+                        &nbsp;</td>
+                </tr>
+            </table>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+            </p>
+        
+        </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>
